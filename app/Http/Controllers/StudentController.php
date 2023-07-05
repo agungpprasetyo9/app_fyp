@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Charts\TryoutMHSChart;
 
-class StundentController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(TryoutMHSChart $TryoutMHSChart)
     {
-        return view('/student/dashboard');
+        //chart
+        $tryout = $TryoutMHSChart->build();
+
+        return view('student.dashboard',compact('tryout'));
     }
 
     /**
@@ -21,6 +25,7 @@ class StundentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         //

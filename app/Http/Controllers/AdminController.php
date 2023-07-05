@@ -10,7 +10,7 @@ use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 // use Calendar;
-use App\Event;
+
 
 class AdminController extends Controller
 {
@@ -42,7 +42,7 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+    * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)

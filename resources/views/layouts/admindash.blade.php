@@ -20,10 +20,10 @@
     <div class="flex flex-row m-2 mt-0 sm:m-0">
       <!-- side menu -->
       <!-- note: remove 'fixed' class for no scroll -->
-      <div class="hidden md:flex menu fixed top-0 left-0 w-1/5 md:w-2/5 max-w-[260px] h-[100vh] flex-col items-center text-white font-semibold text-lg"style="background-image: url('{{ asset('images/dashassets/menu.png') }}');">
-        <img src="{{ asset('images/dashassets/fyp.png') }}" alt="logo" class="max-h-[85px] mt-8" />
+      <div class="hidden md:flex menu fixed top-0 left-0 w-1/5 md:w-2/5 max-w-[260px] h-[100vh] flex-col items-center text-white font-semibold text-lg"style=" background-image: url('{{ asset('images/dashassets/menu.png') }}');">
+        <img src="{{ asset('images/logo.png') }}" alt="logo" class="max-h-[85px] mt-8" />
         <a href="#" class="w-full h-14 mt-8 text-center pt-3.5 bg-[#EFF1F3] text-[#534582]">Dashboard</a>
-        <a href="#" class="w-full h-14 text-center pt-3.5">Individu</a>
+        <a href="#" class="w-full h-{{ asset('images/dashassets/fyp.png') }}14 text-center pt-3.5">Individu</a>
         <a href="#" class="w-full h-14 text-center pt-3.5">Alumni</a>
         <div class="flex flex-col w-full gap-y-0 items-center mt-72">
           <img src="{{ asset('images/dashassets/logout.png') }}" alt="logout" class="max-h-6" />

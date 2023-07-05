@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StudentController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,20 @@ use App\Models\User;
 Route::get('/test', function () {
     // $users = User::where('is_admin', false)->pluck('id')->toArray();
     // dd($users);
+    $result = DB::table('tryouts')
+            ->join('values', 'tryouts.id', '=', 'values.tryout_id')
+            ->join('students', 'values.student_id', '=', 'students.id')
+            ->where('students.id', '=', 1)
+            ->groupBy('tryouts.tryout_name')
+            ->select('tryouts.tryout_name', 'values.value')
+            ->get();
+
+            foreach ($result as $row) {
+                $tryoutNames[] = $row->tryout_name;
+                $tryoutValues[] = $row->value;
+            }
+    // dd($tryoutNames);
+    dd($tryoutValues);
 });
 
     // Route untuk halaman login
@@ -72,8 +87,9 @@ Route::middleware('auth')->group(function () {
 
     // Rute-rute siswa
     Route::prefix('student')->group(function () {
-        Route::get('/studentdashboard', function () {
-            return view('student.dashboard');
-        })->name('student.dashboard');
+        // Route::get('/studentdashboard', function () {
+        //     return view('student.dashboard');
+        // })->name('student.dashboard');
+        Route::get('/studentdashboard',[StudentController::class, 'index'])->name('student.dashboard');
     });
 });
