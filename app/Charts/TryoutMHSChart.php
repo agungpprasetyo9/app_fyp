@@ -18,24 +18,26 @@ class TryoutMHSChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {   
+
         $tryoutNames = [];
         $tryoutValues = [];
-
         $studentId = Auth::id();
+        
         $result = DB::table('tryouts')
             ->join('values', 'tryouts.id', '=', 'values.tryout_id')
             ->join('students', 'values.student_id', '=', 'students.id')
             ->where('students.id', '=', $studentId)
-            ->select('tryouts.tryout_name', 'values.value')
+            ->select('tryouts.tryout_name',DB::raw('CAST(ROUND(values.value) AS CHAR) as score') )
             ->groupBy('tryouts.tryout_name')
             ->get();
 
         
         foreach ($result as $row) {
             $tryoutNames[] = $row->tryout_name;
-            $tryoutValues[] = $row->value;
+            $tryoutValues[] = $row->score;
         }
         return $this->chart->lineChart()
+            ->setTitle('INI title')
             ->setHeight(200)
             ->addData('Tryout', $tryoutValues)
             ->setXAxis($tryoutNames);

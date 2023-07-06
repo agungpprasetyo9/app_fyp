@@ -104,5 +104,11 @@
         </div>
     </div>
 </section>
+@endsection
 
+@section('scripts')
+<script src="{{ $tryoutAVG->cdn() }}"></script>
+{{ $tryoutAVG->script() }} 
+<script src="{{ $subjectValue->cdn() }}"></script>
+{{ $subjectValue->script() }}  
 @endsection

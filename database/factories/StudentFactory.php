@@ -46,15 +46,13 @@ class StudentFactory extends Factory
         // $users = User::where('is_admin', false)->orderBy('id')->select('id')->get();
         // // $user = User::where('is_admin', false)->pulck;
         // foreach ($users as $user){
-        //     return [
-        //         'user_id' => $user->id,
-        //         'room_id' => $this->faker->numberBetween(1,5),
-        //         'name' => $this->faker->name(),
-        //         'school_name' => $this->faker->randomElement($dataSekolah),
-        //         'telp' => $this->faker->phoneNumber(),
-        //         'created_at' => now(),
-        //         'updated_at' => now(),
-        //     ];
+            return [
+                'room_id' => $this->faker->numberBetween(1,5),
+                'name' => $this->faker->name(),
+                'telp' => $this->faker->phoneNumber(),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
         // }
     }
 }

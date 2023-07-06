@@ -237,8 +237,43 @@ class DatabaseSeeder extends Seeder
         //     University::create($university);
         // }
         DB::table('universities')->insert($universities);
+        
 
+        $alumni = [
+            [
+                'id' => 21523225, 'name' => 'Zahwa Almira Kayla', 'school' => 'SMA 1 Bekasi', 'telp' => '62812852', 'acceptance' => 'Tidak lulus', 'universities' => null
+            ],
+            [
+                'id' => 21523456, 'name' => 'Ratih Sekar Wulan', 'school' => 'SMA Al-Azhar', 'telp' => '62814875', 'acceptance' => 'Lulus', 'universities' => 'Universitas Udayana'
+            ],
+            [
+                'id' => 21524882, 'name' => 'Agung Prasetyo Abdjul', 'school' => 'SMA 1 Timika', 'telp' => '62812852', 'acceptance' => 'Tidak lulus', 'universities' => null
+            ],
+            [
+                'id' => 21625252, 'name' => 'Nur Latif Muhammad', 'school' => 'SMA 3 Tangerang', 'telp' => '62814875', 'acceptance' => 'Lulus', 'universities' => 'Universitas Padjadjaran'
+            ],
+            [
+                'id' => 21523224, 'name' => 'Maretta Endah Prameswari', 'school' => 'SMA 4 Kudus', 'telp' => '62812852', 'acceptance' => 'Lulus', 'universities' => 'Universitas Pendidikan Indonesia'
+            ],
+            [
+                'id' => 21827278, 'name' => 'Dzikri Muhammad', 'school' => 'SMA 2 Balikpapan', 'telp' => '62814875', 'acceptance' => 'Lulus', 'universities' => 'Universitas Negeri Jakarta'
+            ],
+            [
+                'id' => 26118192, 'name' => 'Asyla', 'school' => 'SMA 5 Kalimantan Tengah', 'telp' => '62812852', 'acceptance' => 'Lulus', 'universities' => 'Universitas Indonesia'
+            ],
+            [
+                'id' => 27291018, 'name' => 'Mutiara Irdina', 'school' => 'SMA 3 Bandung', 'telp' => '62174875', 'acceptance' => 'Lulus', 'universities' => 'Institut Teknologi Sumatera'
+            ],
+            [
+                'id' => 27189187, 'name' => 'Reza Dwi Puspita', 'school' => 'SMA 12 Boyolali', 'telp' => '62812852', 'acceptance' => 'Tidak lulus', 'universities' => null
+            ],
+            [
+                'id' => 27191771, 'name' => 'Galuh Ihsan Nur Kholis', 'school' => 'SMA 11 Klaten', 'telp' => '62414875', 'acceptance' => 'Lulus', 'universities' => 'UniversitasAirlangga'
+            ]
+        ];
         //
+        DB::table('alumnis')->insert($alumni);
+
         Recommendation::factory(7)->create();
     }
 }

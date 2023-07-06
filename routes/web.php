@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,20 +26,33 @@ use App\Models\User;
 Route::get('/test', function () {
     // $users = User::where('is_admin', false)->pluck('id')->toArray();
     // dd($users);
-    $result = DB::table('tryouts')
+        $tryoutNames = [];
+        $tryoutValues = [];
+        $studentId = Auth::id();
+        
+        $result = DB::table('tryouts')
             ->join('values', 'tryouts.id', '=', 'values.tryout_id')
             ->join('students', 'values.student_id', '=', 'students.id')
-            ->where('students.id', '=', 1)
-            ->groupBy('tryouts.tryout_name')
-            ->select('tryouts.tryout_name', 'values.value')
+            ->where('students.id', '=', $studentId)
+            ->select('tryouts.tryout_name',DB::raw('ROUND(AVG(values.value)) as score') )
             ->get();
 
-            foreach ($result as $row) {
-                $tryoutNames[] = $row->tryout_name;
-                $tryoutValues[] = $row->value;
-            }
+        
+        foreach ($result as $row) {
+            $tryoutNames[] = $row->tryout_name;
+            $tryoutValues[] = $row->score;
+        }
     // dd($tryoutNames);
-    dd($tryoutValues);
+    $result = DB::table('values as v')
+        ->join('tryouts', 'v.tryout_id', '=', 'tryouts.id')
+        ->crossJoin(DB::raw('(SELECT COUNT(id) AS total_tryouts FROM tryouts) AS subquery'))
+        ->where('v.student_id', '=', $studentId)
+        ->selectRaw('SUM(v.value) / (subquery.total_tryouts) AS average_value')
+        ->first();
+
+$averageValue = $result->average_value;
+    dd($averageValue);
+    
 });
 
     // Route untuk halaman login
@@ -83,6 +97,9 @@ Route::middleware('auth')->group(function () {
     // });
     Route::prefix('admin')->group(function () {
         Route::get('/admindashboard',[AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/individu',[AdminController::class, 'individu'])->name('admin.individu');
+        Route::get('/individu/{id}',[AdminController::class, 'detail'])->name('admin.detail');
+
     });
 
     // Rute-rute siswa

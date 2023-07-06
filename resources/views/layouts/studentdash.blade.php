@@ -25,7 +25,7 @@
         <a href="#" class="w-full h-14 mt-8 text-center pt-3.5 bg-[#EFF1F3] text-[#534582]">Dashboard</a>
         <div class="flex flex-col w-full gap-y-0 items-center mt-72">
           <img src="{{ asset('images/dashassets/logout.png') }}" alt="logout" class="max-h-6" />
-          <a href="login_pengelola.html" class="w-full h-14 text-center pt-2">Logout</a>
+          <a href="/logout" class="w-full h-14 text-center pt-2">Logout</a>
         </div>
       </div>
 
@@ -68,8 +68,8 @@
         <div class="bg-transparent flex flex-row m-7 mb-0">
           <div class="rounded-full w-[60px] h-[60px] bg-[#E5E0F4]"></div>
           <div class="ml-4">
-            <h1 class="font-semibold text-2xl">Zahwa Almira Kayla</h1>
-            <p class="font-[350]">21523224 <span class="text-[#5D4E8E]">•</span> Peringkat #45 paralel</p>
+            <h1 class="font-semibold text-2xl">{{ $name }}</h1>
+            <p class="font-[350]">{{ $email }}</p>
           </div>
         </div>
         <!-- contents -->

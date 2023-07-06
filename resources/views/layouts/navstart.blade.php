@@ -8,7 +8,7 @@
     <title>@yield('title') - FYP</title>
 
 </head>
-<body>
+<body class="overflow-hidden">
 <!-- Navbar -->
 <nav class="bg-gray-800 py-4">
     <div class="container mx-auto flex items-center justify-between">

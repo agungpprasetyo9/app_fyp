@@ -9,6 +9,8 @@ use App\Models\Tryout;
 use MaddHatter\LaravelFullcalendar\Facades\Calendar;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 // use Calendar;
 
 
@@ -34,9 +36,19 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function individu()
     {
-        //
+        $students = Student::all();
+        return view('admin.individu',compact('students'));
+    }
+
+    public function detail($id){
+
+        $students = DB::table('students')
+            ->where('id', '=', $id)
+            ->first();
+
+        return view('admin.detail', compact('students'));
     }
 
     /**
