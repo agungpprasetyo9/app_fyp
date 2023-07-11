@@ -13,4 +13,15 @@ class University extends Model
         'university_name',
         'tightness',
     ];
+
+    public function major()
+    {
+        return $this->hasOne(Major::class, 'university_id');
+    }
+
+    public function recommendations()
+    {
+        return $this->hasMany(Recommendation::class, 'university_id');
+    }
+
 }

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @vite('resources/css/app.css')
     <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- <style>
         *{
@@ -60,65 +61,17 @@
           <!-- dropdown menu -->
           <div id="dropdownDivider" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow">
             <div class="py-1">
-              <a href="login_pengelola.html" class="block py-2 px-4 text-sm hover:bg-[#5D4E8E] hover:text-white">Logout</a>
+              <a href="/logout" class="block py-2 px-4 text-sm hover:bg-[#5D4E8E] hover:text-white">Logout</a>
             </div>
           </div>
         </div>
-        <!-- stats -->
-        <div class="bg-transparent flex flex-row m-7 mb-0">
-          <div class="rounded-full w-[60px] h-[60px] bg-[#E5E0F4]"></div>
-          <div class="ml-4">
-            <h1 class="font-semibold text-2xl">{{ $name }}</h1>
-            <p class="font-[350]">{{ $email }}</p>
-          </div>
-        </div>
-        <!-- contents -->
-        <!-- note: make the white divs shorter (h) for no scroll -->
-        <div class="flex flex-col lg:flex-row gap-x-5 m-2 mt-5 sm:m-5">
-          <!-- trial split into two -->
-          <div class="w-full order-2 mt-5 lg:mt-0 lg:order-1">
-            <div class="bg-white h-[300px] w-full rounded-[10px]">
-              <h1 class="font-bold text-xl p-4 pt-3">Perkembangan Nilai PerTryout</h1>
-              {!! $tryout->container() !!}
-            </div>
-          </div>
-          <div class="w-full order-2 mt-5 lg:mt-0 lg:order-1">
-            <div class="bg-white h-[300px] w-full rounded-[10px]">
-              <h1 class="font-bold text-xl p-4 pt-3">Statistik Nilai Persubjek</h1>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col lg:flex-row gap-x-5 m-2 mt-4 sm:m-5">
-          <div class="bg-white h-[400px] w-1/3 mt-5 rounded-[10px]">
-            <h1 class="font-bold text-xl p-4 pt-3">Kehadiran</h1>
-          </div>
-          <div class="bg-white h-[400px] w-full mt-5 rounded-[10px]">
-            <div class="flex flex-row justify-center p-4 pt-1 gap-x-2">
-              <h1 class="font-bold text-xl p-4 pt-3">Rekomendasi Universitas dan jurusan</h1>
-            </div>
-            <div class="flex flex-row justify-center gap-x-1">
-              <div class="px-8">
-                <input type="search" placeholder="Search" class="text-xs lg:text-base my-auto rounded-3xl h-7 lg:h-8 py-1 px-4 lg:px-6 text-[#A5A5A5] bg-[#EAECEE] outline-none" />
-                <label class="relative inline-flex justify-center cursor-pointer">
-                  <input type="checkbox" value="" class="sr-only peer" checked />
-                  <div
-                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-                  ></div>
-                </label>
-
-                <input type="search" placeholder="Search" class="text-xs lg:text-base my-auto rounded-3xl h-7 lg:h-8 py-1 px-4 lg:px-6 text-[#A5A5A5] bg-[#EAECEE] outline-none" />
-                <button type="submit" class="rounded-3xl bg-[#534582] my-auto h-5 md:h-8 px-3 md:px-6 outline-none">
-                  <img src="../assets/search.png" class="w-4" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        {{-- sini masuk --}}
+        @yield('container')
       </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
-    <script src="{{ $tryout->cdn() }}"></script>
-        {{ $tryout->script() }} 
+
+    @yield('script')
   </body>
 </html>

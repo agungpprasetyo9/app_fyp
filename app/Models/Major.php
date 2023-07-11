@@ -19,6 +19,14 @@ class Major extends Model
         'description'
     ];
 
-    
+    public function university()
+    {
+        return $this->belongsTo(University::class, 'university_id');
+    }
+    public function recommendations()
+    {
+        return $this->hasMany(Recommendation::class, 'major_id');
+    }
+
 
 }

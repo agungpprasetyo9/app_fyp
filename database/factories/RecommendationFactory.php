@@ -16,10 +16,11 @@ class RecommendationFactory extends Factory
      */
     public function definition()
     {
+
         $decisions =["sangat direkomendasikan", "direkomendasikan", "tidak direkomendasikan"];
         return [
             'student_id' => $this->faker->numberBetween(1,7),
-            'major_id' => $this->faker->numberBetween(355001,355025),
+            'major_id' => $this->faker->numberBetween(355001,355053),
             'university_id' => $this->faker->numberBetween(111,171),
             'decision' => $this->faker->randomElement($decisions),
             'created_at' => now(),

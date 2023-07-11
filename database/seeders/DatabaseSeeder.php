@@ -167,6 +167,7 @@ class DatabaseSeeder extends Seeder
 
         //tambah data Value
         $studentCount=Student::count();
+        // Value::factory($studentCount*5)->create();
         Value::factory($studentCount*5)->create();
 
         //universities
@@ -274,6 +275,6 @@ class DatabaseSeeder extends Seeder
         //
         DB::table('alumnis')->insert($alumni);
 
-        Recommendation::factory(7)->create();
+        Recommendation::factory(300)->create();
     }
 }

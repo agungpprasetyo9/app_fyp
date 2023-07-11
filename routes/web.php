@@ -6,6 +6,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Models\University;
+use App\Models\Major;
+use App\Models\Value;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +54,14 @@ Route::get('/test', function () {
         ->first();
 
 $averageValue = $result->average_value;
-    dd($averageValue);
+
+    // $universities = University::pluck('university_name');
+    // $universities = University::select('university_name')->paginate(10);
+    $majors = Major::all();
+    $universities = University::all();
+    // $alluniversities = University::all()->toArray();
+    $score = Value::where('student_id', auth()->user()->id)->avg('value');
+    dd($score);
     
 });
 
@@ -99,6 +109,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/admindashboard',[AdminController::class, 'index'])->name('admin.dashboard');
         Route::get('/individu',[AdminController::class, 'individu'])->name('admin.individu');
         Route::get('/individu/{id}',[AdminController::class, 'detail'])->name('admin.detail');
+        Route::get('/alumni',[AdminController::class, 'alumni'])->name('admin.alumni');
+
 
     });
 
@@ -108,5 +120,8 @@ Route::middleware('auth')->group(function () {
         //     return view('student.dashboard');
         // })->name('student.dashboard');
         Route::get('/studentdashboard',[StudentController::class, 'index'])->name('student.dashboard');
+        // Route::get('/studentdashboard/search?{query}',[StudentController::class, 'search'])->name('student.search');
+        Route::post('/search', [StudentController::class, 'search'])->name('search');
+        
     });
 });

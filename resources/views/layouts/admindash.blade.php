@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     @vite('resources/css/app.css')
     <title>Dashboard</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @yield('style')
     <!-- <style>
         *{
             outline-style: solid;
@@ -25,7 +26,7 @@
         {{-- <a href="{{ route('admin.admindashboard') }}" class="w-full h-14 mt-8 text-center pt-3.5 ">Dashboard</a> --}}
         <a href="{{ route('admin.dashboard') }}" class="w-full h-14 text-center pt-3.5 {{ request()->routeIs('admin.dashboard') ? 'bg-[#EFF1F3] text-[#534582]' : '' }}">Dashboard</a>
         <a href="{{ route('admin.individu') }}" class="w-full h-14 text-center pt-3.5 {{ request()->routeIs('admin.individu') ? 'bg-[#EFF1F3] text-[#534582]' : '' }}">Individu</a>
-        <a href="#" class="w-full h-14 text-center pt-3.5">Alumni</a>
+        <a href="{{ route('admin.alumni') }}" class="w-full h-14 text-center pt-3.5 {{ request()->routeIs('admin.alumni') ? 'bg-[#EFF1F3] text-[#534582]' : '' }}">Alumni</a>
         <div class="flex flex-col w-full gap-y-0 items-center mt-72">
           <img src="{{ asset('images/dashassets/logout.png') }}" alt="logout" class="max-h-6" />
           <a href="/logout" class="w-full h-14 text-center pt-2">Logout</a>
@@ -137,9 +138,9 @@
         <!-- akhir -->
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script> --}}
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
 @yield('scripts')
   </body>
 </html>

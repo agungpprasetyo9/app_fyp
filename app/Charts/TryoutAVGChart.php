@@ -31,7 +31,6 @@ class TryoutAVGChart
         }
 
         return $this->chart->lineChart()
-            ->setTitle('Perkembangan Nilai per Try Out')
             // ->setSubtitle('Grafik nilai tryout')
             ->setHeight(200)
             // ->addData('Physical sales', [40, 93, 35, 42, 18, 82])

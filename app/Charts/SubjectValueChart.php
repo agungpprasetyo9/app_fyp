@@ -31,7 +31,6 @@ class SubjectValueChart
             $subjectAVG[] = $row->average_score;
         }
         return $this->chart->horizontalBarChart()
-            ->setTitle('Statistik Nilai per Subjek')
             // ->setSubtitle('')
             // ->setColors('#FFC107', '#D32F2F','#ffc63b', '#ff6384', '#D32F2F','#ffc63b')
             ->setHeight(200)

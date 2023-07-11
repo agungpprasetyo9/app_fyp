@@ -14,4 +14,14 @@ class Recommendation extends Model
         'student_id',
         'major_id'
     ];
+
+    public function universities()
+    {
+        return $this->belongsTo(University::class, 'university_id');
+    }
+
+    public function majors()
+    {
+        return $this->belongsTo(Major::class, 'major_id');
+    }
 }
